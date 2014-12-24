@@ -1,0 +1,31 @@
+body {
+	padding-top: 50px;
+}
+.starter-template {
+	padding: 40px 15px;
+	text-align: center;
+	font-size: 16px;
+}
+.starter-template:nth-child(even){background:#DFDFDF;}
+
+.center {
+	display:inline-block;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+
+.google-maps {
+	position:relative;
+	padding-bottom:60%;
+	height:0;
+	overflow:hidden;
+	
+}
+.google-maps iframe {
+	position:absolute;
+	top:0;
+	left:15%;
+	width:70%;
+	height:100%;
+}

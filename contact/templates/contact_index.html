@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+
+
+{% block picture_block %}
+	<img src="/static/img/winter_bb4.jpg" alt="Contact" width="80%" style="margin:0px auto;display:block;padding-top:5px">
+{% endblock %}
+
+
+{% block body_block %}
+
+	<!-- Faculty -->
+	<section class="starter-template">
+		<div class="container">
+		<h2><u>Faculty &amp Staff</u></h2>
+
+			{% for each in faculty_ %}
+				<div>
+					<li><div style="text-align:left;display:inline-block;margin:10px">
+						Name: {{ each.faculty_firstName }} {{ each.faculty_lastName }}
+					</div>
+					<div style="text-align:left;display:inline-block;margin:10px">
+						Position: {{ each.faculty_position }}
+					</div>
+					<div style="text-align:left;display:inline-block;margin:10px">
+						Email: {{ each.faculty_email }}
+					</div></li>
+				</div>
+			{% endfor %}
+		</div>
+	</section>
+
+	<!-- Location & Directions -->
+	<section class="starter-template">
+		<div class="container">
+			<div>
+				<h2><u>Location &amp Directions</u></h2>
+
+				<u><b>Address:</b></u><br>
+				19821 White Ground Road<br>
+				Boyds, MD 20841<br>
+				<br>
+				The ELF School is located in a wholesome country setting, 10 minutes from Germantown, Poolesville and Clarksburg.
+				<br><br>
+				<b><u>From Washington, DC and the South:</u></b><br>
+				Take 270 North to the exit for Clopper Rd. Rt. 117 going North.  Stay on Rt. 117 for about 15 minutes.  Stay straight through the stop sign to White Ground Rd.  ELF School is behind Boyds Presbyterian Church on the left.<br>
+				<br><br>
+				<b><u>From Frederick and the North:</u></b><br>
+				Take 270 South to the exit for Rt. 121 going West.  Stay of 121 for about 10 minutes.   Turn right at the stop sign to White Ground Rd.  ELF School is behind Boyds Presbyterian Church on the left.<br>
+			</div>
+			<div class="google-maps">
+				<iframe
+					frameborder="0"
+					style="border:0;margin:20px"
+					src="https://www.google.com/maps/embed/v1/place?q=19821+White+Ground+Rd,+Boyds,+MD,+United+States&key=AIzaSyBnWmf4XB1GF7qQY1IFGwd5ZzR6I_aDOPg">
+				</iframe>
+			</div>
+		</div>
+	</section>
+
+	<!-- Email -->
+	<section class="starter-template">
+		<div class="container" style="padding-left:20%;width:60%;text-align:left">
+			<h2><u>Questions? Send us an e-mail</u></h2>
+			<form action="{% url 'contact.views.index' %}" method="POST">{% csrf_token %}
+				{% csrf_token %}
+				<p style="font-size:10px">Information is not encrypted. Do not include sensitive information</p>
+				<br>
+				First and Last name:<br>
+				<input type="text" name="name"><br><br>
+
+				Your e-mail:<br>
+				<input type="text" name="email"><br><br>
+
+				Comment/Question (1000 characters max):<br>
+				<textarea name="comment" maxlength="1000" style="width:50%;height:200px"></textarea><br><br>
+
+				<br>This page will reload shortly after clicking "Send"<br>
+				<input type="submit" value="Send">
+			</form>
+		</div>
+	</section>
+
+{% endblock %}

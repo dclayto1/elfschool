@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block fullcalendar_head %}
+	<link rel='stylesheet' href='/static/fullcalendar/fullcalendar.css'/>
+	<link rel='stylesheet' href='/static/fullcalendar/fullcalendar.print.css'/ media="print">
+
+    <script src='/static/fullcalendar/lib/jquery.min.js'></script>
+    <script src='/static/fullcalendar/lib/moment.min.js'></script>
+
+    <script src='/static/fullcalendar/fullcalendar.js'></script>
+    <script src='/static/fullcalendar/fullcalendar.min.js'></script>
+
+    <script type="text/javascript">
+    	$(document).ready(function() {
+			var calendar = $('#calendar').fullCalendar({
+				header: {
+						left: 'prev,next today',
+						center: 'title',
+						right: 'month,basicWeek'
+				},
+				editable: true,
+				eventLimit: true,
+
+				{{ calendar_|safe }}
+
+			});
+		});
+    </script>
+{% endblock %}
+
+{% block picture_block %}
+	<img src="/static/img/winter_bb3.jpg" alt="News" width="80%" style="margin:0px auto;display:block;padding-top:5px">
+{% endblock %}
+
+{% block body_block %}
+
+	<!-- News -->
+	<section class="starter-template">
+	<div class="container">
+		<h2><u>Elf News</u></h2>
+
+		{% for each in news_ %}
+		<div style="margin:20px;text-align:left">
+			<li>{{ each.news_item|linebreaks }}</li>
+		</div>
+		{% endfor %}
+	</div>
+	</section>
+
+	<!-- NewsLetter -->
+	<section class="starter-template">
+		<div class="container">
+			<h2><u>Elf Newsletter</u></h2>
+
+			<object data="/static/docs/{{ newsLetter_ }}" type="application/pdf" width="100%" height="500px">
+			Your device is unable to display pdf in this browser.<br>
+			<a href="/static/docs/{{ newsLetter_ }}">To download, click here</a>
+			</object>
+		</div>
+	</section>
+
+	<!-- Calendar -->
+	<section class="starter-template">
+		<div class="container">
+			<h2><u>Elf Calendar of Events</u></h2>
+			<br>
+			<div id='calendar'></div>
+		</div>
+	</section>
+{% endblock %}
+
+{% block bootstrap_core_js %}
+{% endblock %}

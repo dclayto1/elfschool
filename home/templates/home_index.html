@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block picture_block %}
+	<img src="/static/img/school.jpg" alt="Home" width="80%" style="margin:0px auto;display:block;padding-top:5px">
+{% endblock %}
+
+
+{% block body_block %}
+	{% for each in about_ %}
+	<section class="starter-template">
+		<div class="container">
+			<div>
+				<h2><u>{{ each.about_title }}</u></h2>
+		
+				{{ each.about_text }}
+				<br>
+			</div>
+		</div>
+	</section>
+	{% endfor %}
+{% endblock %}

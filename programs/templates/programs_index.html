@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+
+{% block picture_block %}
+	<img src="/static/img/winter_bb2.jpg" alt="Programs" width="80%" style="margin:0px auto;display:block;padding-top:5px">
+{% endblock %}
+
+{% block body_block %}
+	<!-- Curriculum -->
+	<section class="starter-template">
+		<div class="container">
+			<h2><u>Class Curriculum</u></h2>
+			
+			{% for each in curriculum_ %}
+			<div style="display:inline-block;margin:10px;text-align:left">
+				<dl>
+					<dt style="text-align:center;font-size:18px"><li><u>{{ each.curriculum_month }}</u></li></dt>
+					<dd><b>Letters</b> - {{ each.curriculum_letters }}</dd>
+					<dd><b>Unit</b> - {{ each.curriculum_unit }}</dd>
+					<dd><b>Cognitive</b> - {{ each.curriculum_cognitive }}</dd>
+					<dd><b>Motor-Gross/Fine</b> - {{ each.curriculum_motor }}</dd>
+				</dl>
+			</div>
+			{% endfor %}
+		</div>
+	</section>
+
+	<!-- Schedules -->
+	<section class="starter-template">
+		<div class="container">
+			<h2><u>Class Schedules</u></h2>
+
+			Classes for AM and PM are as follows;<br>
+			AM: 9:00-11:30AM<br>
+			PM: 12:00-2:30PM<br><br>
+			{% for each in schedules_ %}
+				<div>
+					<b>Days</b> - {{ each.schedules_day}}<br>
+					<b>Age(Birthday between)</b> - {{ each.schedules_age }}
+				</div><br>
+			{% endfor %}
+		</div>
+	</section>
+
+	<!-- Tuition -->
+	<section class="starter-template">
+		<div class="container">
+			<h2><u>Tuition</u></h2>
+
+			{% for each in tuition_ %}
+				<div style="display:inline-block;margin:20px;text-align:left">
+					<dl>
+						<dt style="text-align:center;font-size:18px"><li><u>{{ each.tuition_schedule }}</u></li></dt>
+						<dd><b>Yearly</b> - {{ each.tuition_yearly }}</dd>
+						<dd><b>Monthly</b> - {{ each.tuition_monthly }}</dd>
+					</dl>
+				</div>
+			{% endfor %}
+		</div>
+	</section>
+
+	<!-- Admissions Calendar -->
+	<section class="starter-template">
+		<div class="container">
+			<h2><u>Admissions Calendar</u></h2>
+
+			{% for each in admissionsCal_ %}
+				<div style="margin:10px">
+					{{ each.admissionsCal_item }}
+				</div>
+			{% endfor %}
+		</div>
+	</section>
+
+	<!-- Parent Information -->
+	<section class="starter-template">
+		<div class="container">
+			<h2><u>Parent Information</u></h2>
+
+			{% for each in parentInfo_ %}
+				<li style="text-align:left;margin:10px">{{ each.parentInfo_item }}</li>
+			{% endfor %}
+		</div>
+	</section>
+
+	<!-- Registration Form -->
+	<section class="starter-template">
+		<div class="container">
+			<h2><u>Registration</u></h2>
+			Download and complete the registration form:<br>
+			<a href="/static/docs/Registration_2014-2015.doc" target="_blank">Registration Form</a>
+			<br><br>
+			Please be sure to read the Parent Information above.
+		</div>
+	</section>
+	
+{% endblock %}
